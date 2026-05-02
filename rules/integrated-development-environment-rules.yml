@@ -1,0 +1,79 @@
+aid: integrated-development-environment:rules
+name: Integrated Development Environment Usage Rules
+description: >-
+  Operational rules and guardrails for evaluating, configuring, and operating
+  Integrated Development Environments (IDEs). These rules cover workspace
+  setup, source control, language server use, AI assistant safety, secrets
+  handling, and remote development practices that apply across editors and
+  vendor ecosystems.
+modified: '2026-04-28'
+rules:
+  - id: workspace-isolation
+    category: Workspace
+    statement: >-
+      Open each project in its own workspace or window so that language server,
+      task, and debugger configuration do not leak between unrelated codebases.
+  - id: lsp-per-language
+    category: Language Servers
+    statement: >-
+      Prefer the official language server (LSP) for each language and pin its
+      version in repository configuration to keep diagnostics and refactors
+      consistent across machines.
+  - id: source-control-required
+    category: Source Control
+    statement: >-
+      Require a clean source control state before running large refactors,
+      automated edits, or AI-driven code generation so that changes can be
+      reviewed and reverted as a single unit.
+  - id: secrets-out-of-workspace
+    category: Security
+    statement: >-
+      Keep API tokens, cloud credentials, and signing keys in OS keychains or
+      .env files excluded from source control rather than in checked-in IDE
+      settings.
+  - id: extension-trust
+    category: Extensions
+    statement: >-
+      Install editor extensions only from the vendor marketplace or a verified
+      publisher and review the requested permissions before enabling.
+  - id: ai-assistant-scope
+    category: AI Coding
+    statement: >-
+      Restrict AI coding assistants to the active workspace and explicitly
+      whitelisted directories; do not grant blanket access to the home
+      directory or system-level paths.
+  - id: ai-assistant-review
+    category: AI Coding
+    statement: >-
+      Review every AI-suggested edit through the diff viewer before accepting,
+      and run the project's tests or type checker before committing.
+  - id: mcp-server-allowlist
+    category: AI Coding
+    statement: >-
+      When connecting Model Context Protocol (MCP) servers to an editor,
+      maintain an allowlist of servers and tools, and prefer read-only or
+      sandboxed servers for untrusted projects.
+  - id: remote-dev-isolation
+    category: Remote Development
+    statement: >-
+      Use dev containers, codespaces, or SSH remotes to isolate project
+      toolchains rather than installing every language runtime globally on the
+      workstation.
+  - id: format-on-save-pinned
+    category: Code Quality
+    statement: >-
+      Pin formatter and linter versions per repository (e.g., .prettierrc,
+      .editorconfig, ruff/eslint config) so that format-on-save behaves
+      identically across contributors and IDEs.
+  - id: debugger-source-maps
+    category: Debugging
+    statement: >-
+      Generate and ship source maps for compiled and bundled languages so that
+      breakpoints, stack traces, and step-through debugging map back to the
+      original source.
+  - id: telemetry-policy
+    category: Privacy
+    statement: >-
+      Document and enforce a team telemetry policy for the IDE and its
+      extensions, disabling telemetry that is not required when working with
+      regulated or proprietary code.
