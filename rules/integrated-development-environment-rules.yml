@@ -1,12 +1,12 @@
-aid: integrated-development-environment:rules
-name: Integrated Development Environment Usage Rules
+x-aid: integrated-development-environment:rules
+x-name: Integrated Development Environment Usage Rules
 description: >-
   Operational rules and guardrails for evaluating, configuring, and operating
   Integrated Development Environments (IDEs). These rules cover workspace
   setup, source control, language server use, AI assistant safety, secrets
   handling, and remote development practices that apply across editors and
   vendor ecosystems.
-modified: '2026-04-28'
+x-modified: '2026-04-28'
 rules:
   - id: workspace-isolation
     category: Workspace
