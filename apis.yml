@@ -47,7 +47,6 @@ tags:
   - Language Server Protocol
   - LSP
   - Refactoring
-  - Source Control
   - Workspace
 created: '2026-04-28'
 modified: '2026-04-28'
@@ -66,3 +65,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-tags-removed:
+- Source Control
